@@ -1,0 +1,13 @@
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\bin\Debug\Spotify11.exe.config
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\bin\Debug\Spotify11.exe
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\bin\Debug\Spotify11.pdb
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\obj\Debug\Spotify11.csproj.AssemblyReference.cache
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\obj\Debug\Spotify11.csproj.SuggestedBindingRedirects.cache
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\obj\Debug\Spotify11.Properties.Resources.resources
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\obj\Debug\Spotify11.csproj.GenerateResource.cache
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\obj\Debug\Spotify11.csproj.CoreCompileInputs.cache
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\obj\Debug\Spotify11.exe
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\obj\Debug\Spotify11.pdb
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\bin\Debug\Oracle.DataAccess.dll
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\obj\Debug\Spotify11.csproj.CopyComplete
+D:\Faculty\3rd year\2nd term\sw\project\Spotify11\Spotify11\obj\Debug\Spotify11.Form1.resources
