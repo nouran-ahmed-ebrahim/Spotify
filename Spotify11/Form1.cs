@@ -163,7 +163,6 @@ namespace Spotify11
                 caregoryId = Convert.ToInt32(reader[2].ToString());
                 categoryName = getCategoryName(caregoryId);
                 artistName = getSongArtist(songId);
-               // artistName = getSongArtist(songId);
 
                 //fill songs lIst view
                 song = new ListViewItem(songName);
@@ -172,11 +171,9 @@ namespace Spotify11
 
                 // collect songs artists;
                 artists.Add(artistName);    
-              //  artists.Add(artistName);    
             }
 
             displayArtist(artists);
-            //displayArtist(artists);
         }
 
         private void displayArtist(HashSet<string> artists)
@@ -193,16 +190,13 @@ namespace Spotify11
             OracleCommand command = new OracleCommand
             {
                 Connection = connection,
-                CommandText= "select categoryname from songscategory where  categoryid = :category_Id"
+                CommandText= "select categoryname from songscategory where  categoryid = :category_Id",
                 //    CommandType = CommandType.StoredProcedure,
                 //    CommandText = "GETCATEGORYNAME"
-                   Connection = connection,
-                   CommandText= "select categoryname from songscategory where  categoryid = :category_Id"
-                    //CommandType = CommandType.StoredProcedure,
-                    //CommandText = "GETCATEGORYNAME"
+               
             };
 
-            
+            command.Parameters.Add("id", caregoryId.ToString());            
             OracleDataReader dr = command.ExecuteReader();
             while (dr.Read())
                 categoryName = (string)dr[0].ToString();
