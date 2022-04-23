@@ -118,6 +118,7 @@ namespace Spotify11
 
             return dr;
         }
+
         private OracleDataReader IsItArtist()
         {
             string command = "select * from Artist where LOWER(name) = :searchTextBox";
@@ -162,6 +163,7 @@ namespace Spotify11
                 caregoryId = Convert.ToInt32(reader[2].ToString());
                 categoryName = getCategoryName(caregoryId);
                 artistName = getSongArtist(songId);
+               // artistName = getSongArtist(songId);
 
                 //fill songs lIst view
                 song = new ListViewItem(songName);
@@ -170,9 +172,11 @@ namespace Spotify11
 
                 // collect songs artists;
                 artists.Add(artistName);    
+              //  artists.Add(artistName);    
             }
 
             displayArtist(artists);
+            //displayArtist(artists);
         }
 
         private void displayArtist(HashSet<string> artists)
@@ -192,17 +196,16 @@ namespace Spotify11
                 CommandText= "select categoryname from songscategory where  categoryid = :category_Id"
                 //    CommandType = CommandType.StoredProcedure,
                 //    CommandText = "GETCATEGORYNAME"
+                   Connection = connection,
+                   CommandText= "select categoryname from songscategory where  categoryid = :category_Id"
+                    //CommandType = CommandType.StoredProcedure,
+                    //CommandText = "GETCATEGORYNAME"
             };
 
-            command.Parameters.Add("Id", caregoryId);
-            //  command.Parameters.Add("name", OracleDbType.Varchar2, ParameterDirection.Output);
-            //  command.ExecuteNonQuery();
-            //  categoryName = command.Parameters["name"].Value.ToString();
             
             OracleDataReader dr = command.ExecuteReader();
             while (dr.Read())
                 categoryName = (string)dr[0].ToString();
-
             return categoryName;
         }
 
@@ -228,5 +231,50 @@ namespace Spotify11
 
             return artistName;
         }
+
+        private void addToFavBtn_Click(object sender, EventArgs e)
+        {
+            string song_name=" ";
+            if (SongsList.SelectedItems.Count > 0)
+            {
+                song_name = SongsList.SelectedItems[0].Text;
+                OracleCommand command = new OracleCommand
+                {
+                    Connection = connection,
+                    CommandText = "insert into FAVOURITLIST values(:songId,2)"
+                };
+                int id = getSongId(song_name);
+                command.Parameters.Add("song_id", id);
+                int r = command.ExecuteNonQuery();
+
+                if (r != 0)
+                {
+                    MessageBox.Show("new song added");
+                }
+            }
+            else
+            {
+                MessageBox.Show("select item");
+            }
+        }
+
+        private int getSongId(string name)
+        {
+            OracleCommand command = new OracleCommand
+            {
+                Connection = connection,
+                CommandText = "select songid from songs where songname = :name "
+            };
+            command.Parameters.Add("name", name);
+            int id = 0;
+            OracleDataReader dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                id = Convert.ToInt32(dr[0].ToString());
+            }
+            dr.Close();
+            return id;
+        }
+
     }
 }
