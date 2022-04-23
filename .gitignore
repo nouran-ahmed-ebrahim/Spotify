@@ -137,3 +137,6 @@ Spotify11/bin/Debug/Spotify11.exe
 *.exe
 Spotify11/obj/Debug/Spotify11.exe
 *.exe
+Spotify11/bin/Debug/Spotify11.exe
+.vs/Spotify11/v17/.suo
+*.exe
