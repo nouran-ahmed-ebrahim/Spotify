@@ -209,7 +209,6 @@ namespace Spotify11
             OracleCommand command = new OracleCommand
             {
                 Connection = connection,
-               // CommandText = "select categoryname from songscategory where  categoryid = :category_Id"
                   CommandType = CommandType.StoredProcedure,
                   CommandText = "GETARTISTNAME"
             };
@@ -218,10 +217,6 @@ namespace Spotify11
             command.Parameters.Add("name", OracleDbType.Varchar2,2000,null, ParameterDirection.Output);
            command.ExecuteNonQuery();
             artistName = command.Parameters["name"].Value.ToString();
-
-          //  OracleDataReader dr = command.ExecuteReader();
-          //  while (dr.Read())
-          //  categoryName = (string)dr[0].ToString();
 
             return artistName;
         }
