@@ -34,9 +34,9 @@
             this.SongName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.song_Category = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.artistList = new System.Windows.Forms.ListView();
+            this.ArtistNameCln = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.addToFavBtn = new System.Windows.Forms.Button();
             this.AddToArtistBtn = new System.Windows.Forms.Button();
-            this.ArtistNameCln = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // searchTextBox
@@ -62,8 +62,10 @@
             this.SongsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.SongName,
             this.song_Category});
+            this.SongsList.FullRowSelect = true;
             this.SongsList.HideSelection = false;
             this.SongsList.Location = new System.Drawing.Point(70, 143);
+            this.SongsList.MultiSelect = false;
             this.SongsList.Name = "SongsList";
             this.SongsList.Size = new System.Drawing.Size(530, 299);
             this.SongsList.TabIndex = 2;
@@ -92,6 +94,11 @@
             this.artistList.UseCompatibleStateImageBehavior = false;
             this.artistList.View = System.Windows.Forms.View.Details;
             // 
+            // ArtistNameCln
+            // 
+            this.ArtistNameCln.Text = "Artist_Name";
+            this.ArtistNameCln.Width = 250;
+            // 
             // addToFavBtn
             // 
             this.addToFavBtn.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -102,6 +109,7 @@
             this.addToFavBtn.TabIndex = 5;
             this.addToFavBtn.Text = "Add To Favorite List";
             this.addToFavBtn.UseVisualStyleBackColor = true;
+            this.addToFavBtn.Click += new System.EventHandler(this.addToFavBtn_Click_1);
             // 
             // AddToArtistBtn
             // 
@@ -113,11 +121,6 @@
             this.AddToArtistBtn.TabIndex = 6;
             this.AddToArtistBtn.Text = "Add To Artist List";
             this.AddToArtistBtn.UseVisualStyleBackColor = true;
-            // 
-            // ArtistNameCln
-            // 
-            this.ArtistNameCln.Text = "Artist_Name";
-            this.ArtistNameCln.Width = 250;
             // 
             // Form1
             // 

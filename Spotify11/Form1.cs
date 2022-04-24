@@ -215,8 +215,8 @@ namespace Spotify11
             };
 
             command.Parameters.Add("Id", songId);
-            command.Parameters.Add("name", OracleDbType.Varchar2,60, ParameterDirection.Output);
-            command.ExecuteNonQuery();
+            command.Parameters.Add("name", OracleDbType.Varchar2,2000,null, ParameterDirection.Output);
+           command.ExecuteNonQuery();
             artistName = command.Parameters["name"].Value.ToString();
 
           //  OracleDataReader dr = command.ExecuteReader();
@@ -226,9 +226,28 @@ namespace Spotify11
             return artistName;
         }
 
-        private void addToFavBtn_Click(object sender, EventArgs e)
+        private int getSongId(string name)
         {
-            string song_name=" ";
+            OracleCommand command = new OracleCommand
+            {
+                Connection = connection,
+                CommandText = "select songid from songs where songname = :name "
+            };
+            command.Parameters.Add("name", name);
+            int id = 0;
+            OracleDataReader dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                id = Convert.ToInt32(dr[0].ToString());
+            }
+            dr.Close();
+            return id;
+        }
+
+        private void addToFavBtn_Click_1(object sender, EventArgs e)
+        {
+
+            string song_name = " ";
             if (SongsList.SelectedItems.Count > 0)
             {
                 song_name = SongsList.SelectedItems[0].Text;
@@ -251,24 +270,5 @@ namespace Spotify11
                 MessageBox.Show("select item");
             }
         }
-
-        private int getSongId(string name)
-        {
-            OracleCommand command = new OracleCommand
-            {
-                Connection = connection,
-                CommandText = "select songid from songs where songname = :name "
-            };
-            command.Parameters.Add("name", name);
-            int id = 0;
-            OracleDataReader dr = command.ExecuteReader();
-            while (dr.Read())
-            {
-                id = Convert.ToInt32(dr[0].ToString());
-            }
-            dr.Close();
-            return id;
-        }
-
     }
 }
